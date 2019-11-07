@@ -7,8 +7,8 @@ Manages three different types of third party SDK that provide services within th
   3. __Crashlytics:__ This SDK represents a class of SDKs that can NOT be disabled on the fly and require an app restart. This SDK is configured as an Analytics tracker.
 
 # App Notice SDK for Android<br>Installation and Customization
-*Current version: [v2.2.2.4][version]*  
-Last updated: Sep 17, 2018
+*Current version: [v2.2.8][version]*  
+Last updated: Nov 07, 2019
 
 
 ## Prerequisites

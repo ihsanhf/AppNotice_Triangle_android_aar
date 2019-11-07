@@ -175,7 +175,8 @@ This section covers how to implement the App Notice SDK into an Android Studio p
            // Start the implied consent flow (recommended)
            //   0: Displays on first start and every notice ID change (recommended).
            //   1+: Is the max number of times to display the consent screen on start up in a 30-day period.
-           appNotice.startConsentFlow(IMPLIED_DEFAULT_BEHAVIOR);  // IMPLIED_DEFAULT_BEHAVIOR = 0
+           if (!appNotice.getAcceptedState())
+               appNotice.startConsentFlow(IMPLIED_DEFAULT_BEHAVIOR);  // IMPLIED_DEFAULT_BEHAVIOR = 0
        } else {
            // Example of instantiating the App Notice SDK in explicit mode.
            // To be in compliance with honoring a user's prior consent, you must start this consent flow
@@ -185,7 +186,8 @@ This section covers how to implement the App Notice SDK into an Android Studio p
            appNotice = new AppNotice(this, EVIDON_TOKEN, appNotice_callback, IS_IMPLIED_MODE, GDPR_Required );  // IS_IMPLIED_MODE = false, GDPR_Required= true(This enables the GDPR Privacy policy)
    
            // Start the explicit consent flow:
-           appNotice.startConsentFlow();
+           if (!appNotice.getAcceptedState())
+               appNotice.startConsentFlow();
        }
    }
    ```

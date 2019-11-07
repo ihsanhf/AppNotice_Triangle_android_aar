@@ -24,7 +24,9 @@ import java.util.HashMap;
 
 import io.fabric.sdk.android.Fabric;
 
-
+/**
+ * Created by vinayreddy.
+ */
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "Triangle_aar";
     private Activity activity;
@@ -123,7 +125,8 @@ public class MainActivity extends AppCompatActivity {
             // Start the implied consent flow (recommended)
             //   0: Displays on first start and every notice ID change (recommended).
             //   1+: Is the max number of times to display the consent screen on start up in a 30-day period.
-            appNotice.startConsentFlow(IMPLIED_DEFAULT_BEHAVIOR);  // IMPLIED_DEFAULT_BEHAVIOR = 0
+            if (!appNotice.getAcceptedState())
+                appNotice.startConsentFlow(IMPLIED_DEFAULT_BEHAVIOR);  // IMPLIED_DEFAULT_BEHAVIOR = 0
         } else {
             // Example of instantiating the App Notice SDK in explicit mode.
             // To be in compliance with honoring a user's prior consent, you must start this consent flow
@@ -133,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
             appNotice = new AppNotice(this, EVIDON_TOKEN, appNotice_callback, IS_IMPLIED_MODE,true);  // IS_IMPLIED_MODE = false
 
             // Start the explicit consent flow:
-            appNotice.startConsentFlow();
+            if (!appNotice.getAcceptedState())
+                appNotice.startConsentFlow();
         }
     }
 

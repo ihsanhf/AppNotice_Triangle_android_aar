@@ -125,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
             // Start the implied consent flow (recommended)
             //   0: Displays on first start and every notice ID change (recommended).
             //   1+: Is the max number of times to display the consent screen on start up in a 30-day period.
-            if (!appNotice.getAcceptedState())
                 appNotice.startConsentFlow(IMPLIED_DEFAULT_BEHAVIOR);  // IMPLIED_DEFAULT_BEHAVIOR = 0
         } else {
             // Example of instantiating the App Notice SDK in explicit mode.
@@ -136,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
             appNotice = new AppNotice(this, EVIDON_TOKEN, appNotice_callback, IS_IMPLIED_MODE,true);  // IS_IMPLIED_MODE = false
 
             // Start the explicit consent flow:
-            if (!appNotice.getAcceptedState())
                 appNotice.startConsentFlow();
         }
     }
@@ -183,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 adView.loadAd(adRequest);
 
                 // Toast the AdMob showing message (optional)
-                Toast.makeText(this, TOAST_ADMOB_ENABLE, Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, TOAST_ADMOB_ENABLE, Toast.LENGTH_LONG).show();
             } else {
                 // Stop the AdMob tracker as specified by the user:
                 // To honor a user's withdrawn consent, if a tracker can be turned off or disabled,
@@ -193,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                 adView.setVisibility(View.GONE);
 
                 // Toast the AdMob disabled message (optional)
-                Toast.makeText(this, TOAST_ADMOB_DISABLE, Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, TOAST_ADMOB_DISABLE, Toast.LENGTH_LONG).show();
             }
 
             // == Manage Crashlytics ================================
@@ -206,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             if (Fabric.isInitialized()) {    // Crashlytics is running in this session
                 if (crashlyticsEnabled) {
                     // Toast the Crashlytics is enabled message (optional)
-                    Toast.makeText(this, TOAST_CRASHLYTICS_ENABLE, Toast.LENGTH_LONG).show();
+//                    Toast.makeText(this, TOAST_CRASHLYTICS_ENABLE, Toast.LENGTH_LONG).show();
                 } else {
                     // Remember to notify the user that an app restart is required to disable this tracker:
                     // To honor a user's withdrawn consent, if a tracker can NOT be turned off or
@@ -226,12 +224,12 @@ public class MainActivity extends AppCompatActivity {
                     // Do nothing: Crashlytics is disabled and not running
 
                     // Toast the Crashlytics is disabled message (optional)
-                    Toast.makeText(this, TOAST_CRASHLYTICS_DISABLE, Toast.LENGTH_LONG).show();
+//                    Toast.makeText(this, TOAST_CRASHLYTICS_DISABLE, Toast.LENGTH_LONG).show();
                 }
             }
 
         } else {
-            Toast.makeText(activity, TOAST_TEXT_NOPREFS, Toast.LENGTH_LONG).show();
+//            Toast.makeText(activity, TOAST_TEXT_NOPREFS, Toast.LENGTH_LONG).show();
         }
     }
 
